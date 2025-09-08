@@ -1,0 +1,24 @@
+{
+  "name": "Hide Project Copy",
+  "description": "Hides the Copy Project functionality for projects with many files",
+  "namespace": "HideProjectCopy\\ExternalModule",
+  "framework-version": 3,
+  "authors": [
+    {
+      "name": "Ryan Valentine",
+      "email": "rval@stanford.edu",
+      "institution": "Stanford University"
+    }
+  ],
+  "permissions": [
+    "redcap_every_page_top"
+  ],
+  "system-settings": [
+    {
+      "key": "max-files",
+      "name": "Number of files allowed on a project before copying is disabled",
+      "required": false,
+      "type": "text"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+Allows admins to hide the "Copy Project" button if a project exceeds a defined number of edocs.
