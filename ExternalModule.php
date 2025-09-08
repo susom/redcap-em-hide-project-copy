@@ -11,7 +11,6 @@ class ExternalModule extends AbstractExternalModule {
         $docNumArr = $this->edocsCount();
         $docNum = intval($docNumArr[0]);
         $maxFiles = intval($this->getSystemSetting('max-files'));
-        echo $docNum;
 
         if ($docNum > $maxFiles and PAGE == 'ProjectSetup/other_functionality.php') {
 
