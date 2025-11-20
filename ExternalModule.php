@@ -6,7 +6,7 @@ use ExternalModules\AbstractExternalModule;
 
 class ExternalModule extends AbstractExternalModule {
 
-    function redcap_every_page_top($project_id) {
+    function redcap_every_page_top($project_id): void {
 
         if (PAGE != 'ProjectSetup/other_functionality.php') {
             return;
