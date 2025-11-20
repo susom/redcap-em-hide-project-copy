@@ -12,8 +12,7 @@ class ExternalModule extends AbstractExternalModule {
             return;
         }
 
-        $docNumArr = $this->edocsCount();
-        $docNum = intval($docNumArr[0]);
+        $docNum = $this->edocsCount();
         $maxFiles = intval($this->getSystemSetting('max-files'));
 
         if ($docNum > $maxFiles) {
@@ -23,16 +22,15 @@ class ExternalModule extends AbstractExternalModule {
 
     }
 
-    function edocsCount(){
-        $sql = 'SELECT COUNT(DISTINCT doc_id) as docs FROM redcap_edocs_metadata WHERE project_id = ' . $this->getProjectId();
-        $result = $this->framework->query($sql);
+    function edocsCount(): int {
 
-        $response = array_column(
-            $result->fetch_all(MYSQLI_ASSOC),
-            'docs'
-        );
+        $pid = $this->getProjectId();
+        $sql = sprintf("SELECT COUNT(DISTINCT doc_id) as docs from redcap_edocs_metadata WHERE project_id = $pid");
+        $result = db_query($sql);
+        $data = db_fetch_assoc($result);
+        $docnum = intval($data['docs']);
 
-        return $response;
+        return $docnum;
     }
 
     protected function includeJs($file) {
