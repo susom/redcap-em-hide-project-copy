@@ -8,11 +8,15 @@ class ExternalModule extends AbstractExternalModule {
 
     function redcap_every_page_top($project_id) {
 
+        if (PAGE != 'ProjectSetup/other_functionality.php') {
+            return;
+        }
+
         $docNumArr = $this->edocsCount();
         $docNum = intval($docNumArr[0]);
         $maxFiles = intval($this->getSystemSetting('max-files'));
 
-        if ($docNum > $maxFiles and PAGE == 'ProjectSetup/other_functionality.php') {
+        if ($docNum > $maxFiles) {
 
             $this->includeJs('js/hideRow.js');
         }
